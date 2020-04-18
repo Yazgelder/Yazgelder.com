@@ -1,0 +1,62 @@
+﻿@model Contact
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "İletişim"; 
+}
+
+<section class="shopping-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="wpcf7-form form-horizontal">
+                     
+                    <fieldset>
+
+                        <legend>@ViewData["Title"]</legend>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Name</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Name</div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Surname</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Surname</div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">EMail</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.EMail</div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Date</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Date.ToShortDateString()</div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Message</label>
+                            <div class="col-md-4">
+                                <pre>@Model.Message</pre>
+
+                            </div>
+                        </div>
+                         
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

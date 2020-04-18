@@ -1,0 +1,100 @@
+﻿@model List<Yazgelder.Entity.Models.News>
+@inject Yazgelder.Infrastructure.ISysFunctions _sysFunctions
+
+@{
+    ViewData["Title"] = "Bizden Haberler";
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li><a href="/AboutUs" title="Yazılım Geliştiricileri Derneği Hakkımızda sayfası">Hakkımızda</a></li>
+                    <li class="active">@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- content begin -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div id="blog-grid" class="blog-grid">
+                    @foreach (var item in Model)
+                    {
+                        var img = item.FileList.FirstOrDefault();
+                        <!-- post begin -->
+
+                        <article class="item col-md-4 col-sm-6">
+                            <div class="post-media">
+                                <img alt="@(img==null?"Yazgelder":img.Title)" src="@(img==null?"/images/ShareImage.png":img.FileName)" class="img-responsive">
+                                <div class="post-date">
+                                    <span class="date-day">@item.SenderDate.Day</span>
+                                    <span class="date-month">@item.SenderDate.ToString("MMM")</span>
+                                </div>
+                            </div>
+                            <div class="post-content">
+                                <div class="post-title">
+                                    <h5><a href="/News/Detail/@item.Id.ToString()">@item.Title</a></h5>
+                                </div>
+
+                                <div class="post-entry">
+                                    <p>@_sysFunctions.GetString(item.Body, 200)</p>
+                                </div>
+                            </div>
+                        </article>
+                        <!-- post close -->
+                    }
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="main-sidebar">
+                    <aside class="widget widget_categories">
+                        <h3 class="widget-title">Kategoriler</h3>
+                        <div class="tiny-border"></div>
+                        <ul>
+                            @if (ViewBag.Categories != null)
+                            {
+                                foreach (var item in (List<Categories>)ViewBag.Categories)
+                                {
+                                    <li class="cat-item"><a href="/news/?cat=@item.Id.ToString()">@item.Name</a></li>
+                                }
+                            }
+                        </ul>
+                    </aside>
+
+                    <aside class="widget widget_tag_cloud">
+                        <h3 class="widget-title">Tags</h3>
+                        <div class="tiny-border"></div>
+                        <div class="tagcloud">
+                            @if (ViewBag.Tags != null)
+                            {
+                                foreach (var item in (List<Tag>)ViewBag.Tags)
+                                {
+                                    <a href="/news/?tag=@item.Id.ToString()">@item.Name</a>
+                                }
+                            }
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content close -->

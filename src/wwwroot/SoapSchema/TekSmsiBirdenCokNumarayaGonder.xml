@@ -1,0 +1,16 @@
+﻿<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:TekSmsiBirdenCokNumarayaGonder">
+  <soapenv:Header />
+  <soapenv:Body>
+    <urn:TekSmsiBirdenCokNumarayaGonder soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+      <kullanicino xsi:type="xsd:string">{{kullanicino}}</kullanicino>
+      <kullaniciadi xsi:type="xsd:string">{{kullaniciadi}}</kullaniciadi>
+      <sifre xsi:type="xsd:string">{{sifre}}</sifre>
+      <orjinator xsi:type="xsd:string">{{orjinator}}</orjinator>
+      <numaralar xsi:type="xsd:string">{{numaralar}}</numaralar>
+      <mesaj xsi:type="xsd:string">{{mesaj}}</mesaj>
+      <zaman xsi:type="xsd:string">{{zaman}}</zaman>
+      <zamanasimi xsi:type="xsd:string">0</zamanasimi>
+      <tip xsi:type="xsd:string">Turkce</tip>
+    </urn:TekSmsiBirdenCokNumarayaGonder>
+  </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,50 @@
+﻿@model List<Tag>
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Tag Listesi";
+    int i = 1;
+}
+
+
+
+<section id="shopping-cart" class="bg-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <a class="btn btn-success" href="/Admin/Tag/EditOrInsert/@Guid.Empty">Yeni Ekle</a>
+            </div>
+        </div>
+             <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">LinkName</th> 
+                            <th scope="col">Fonsiyonlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@item.Name</td>
+                            <td>@item.LinkName </td> 
+                            <td>
+                                <a class="btn btn-warning" href="/Admin/Tag/EditOrInsert/@item.Id">Düzenle</a>
+                                <a class="btn btn-danger" onclick="return confirm('Emin misin?')" href="/Admin/Tag/Delete/@item.Id">Sil</a>
+                            </td>
+                        </tr>
+                            i++;
+                        }
+                     
+                    </tbody>
+                </table>
+            </div> 
+    
+        </div>
+    
+    </div>
+</section>

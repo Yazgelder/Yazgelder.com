@@ -1,0 +1,97 @@
+<header class="site-header-1 site-header">
+    <div id="sticked-menu" class="main-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div id="logo" class="pull-left">
+                        <a href="/" title="Yazılım Geliştiricileri Derneği Ana Sayfası">
+                            <img src="/images/logo.png" alt="Yazılım Geliştiricileri Derneği" class="logo">
+                        </a>
+                    </div>
+                    <a id="show-mobile-menu" class="btn-mobile-menu hidden-lg hidden-md"><i class="fa fa-bars"></i></a>
+                    <nav id="mobile-menu" class="site-mobile-menu hidden-lg hidden-md">
+                        <ul></ul>
+                    </nav>
+                    <nav id="desktop-menu" class="site-desktop-menu hidden-xs hidden-sm">
+                        <ul class="clearfix">
+                            <li>
+                                <a href="javascipt:void(0);">Kurumsal</a>
+                                <ul>
+                                    <li><a href="/AboutUs">Hakkımızda</a></li>
+                                    <li><a href="/AboutUs/Charter">Tüzük</a></li>
+                                    <li><a href="/AboutUs/MissionAndObjectives">Misyon ve Hedefler</a></li>
+                                    <li><a href="/AboutUs/BoardOfDirectors">Yönetim Kurulu</a></li>
+                                    <li><a href="/AboutUs/BoardDecisions">Yönetim Kurul Kararları</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Projeler</a>
+                                <ul>
+                                    <li><a href="/Projects">Projeler</a></li>
+                                    <li><a href="/Projects/Proposal">Proje Önerisi</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Events">Etkinlikler</a>
+                            </li>
+                            <li>
+                                <a href="/News">Haberler</a>
+                            </li>
+                            <li>
+                                <a href="/Member">Üyelik Başvurusu</a>
+                                <ul>
+                                    <li><a href="/Member/GeneralAssembly">Genel Kurul Üyesi</a></li>
+                                    <li><a href="/Member/Honorary">Fahri Üye</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/Contact">İletişim</a>
+                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>
+                                    <a href="#">Admin</a>
+                                    <ul>
+                                        <li><a href="/Admin/Home">Ana Sayfa</a></li>
+                                        <li><a href="/Admin/BoardDecisions">Karar Listesi</a></li>
+                                        <li><a href="/Admin/Categories">Kategori Listesi</a></li>
+                                        <li><a href="/Admin/Contact">İletişim Listesi</a></li>
+                                        <li><a href="/Admin/Events">Event Listesi</a></li>
+                                        <li><a href="/Admin/Link">Link Listesi</a></li>
+                                        <li><a href="/Admin/Member">Üye Listesi</a></li>
+                                        <li><a href="/Admin/MemberRequest">Üye Başvuru Listesi</a></li>
+                                        <li><a href="/Admin/News">Haber Listesi</a></li>
+                                        <li><a href="/Admin/Newsletter">Newsletter Listesi</a></li>
+                                        <li><a href="/Admin/ProjectProposal">Proje Öneri Listesi</a></li>
+                                        <li><a href="/Admin/Project">Proje Listesi</a></li>
+                                        <li><a href="/Admin/SendMesageList">Mesaj Raporları</a></li>
+                                        <li><a href="/Admin/Tag">Tag Listesi</a></li>
+                                        <li><a href="/Admin/User">Kullanıcı Listesi</a></li>
+                                        <li><a href="/Admin/SignOut">Çıkış</a></li>
+                                    </ul>
+                                </li>
+
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="gray-line-2"></div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <div class="modal-dialog myModal-search">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form role="search" method="get" class="search-form" action="">
+                    <input type="search" class="search-field" placeholder="Arayın" value="" title="" />
+                    <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model List<Newsletter>
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Şirket Listesi";
+    int i = 1;
+}
+
+<section id="shopping-cart" class="bg-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Mail</th>
+                            <th scope="col">IpAdress</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Fonsiyonlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>@item.Mail</td>
+                                <td>@item.IpAdress </td>
+                                <td>@item.Date.ToShortDateString() </td>
+                                <td>
+                                    <a class="btn btn-danger" onclick="return confirm('Emin misin?')" href="/Admin/Newsletter/Delete/@item.Id">Sil</a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>

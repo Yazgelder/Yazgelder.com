@@ -1,0 +1,55 @@
+﻿@{
+
+    ViewData["Title"] = "Kaydınız alındı.";
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Url"] = "https://www.yazgelder.org/Uyelik/MemberRequestAccept";
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"] </h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li class="active">@ViewData["Title"] </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div id="content" class="no-padding">
+    <section id="section-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <img src="/images/Basarili.jpg" alt="Yazılım Geliştiricileri Derneği - @ViewData["Title"]" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-box">
+                        <h2 class="box-title">Birlikte Başarıya Doğru</h2>
+                        <div class="tiny-border"></div>
+                        Kaydınız alınmıştır. Teşekkür ederiz.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    @Html.Partial("_fooder")
+
+</div>

@@ -1,0 +1,211 @@
+﻿@model News
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Haber";
+}
+@section HadersAdmin
+{
+
+    <link href="~/css/select2.min.css" rel="stylesheet" />
+}
+<section class="shopping-cart">
+    <div class="container">
+        <div class="row">
+            <form action="/Admin/News/EditOrInsert" method="post" class="wpcf7-form form-horizontal">
+                <div class="col-md-8">
+
+                    <fieldset>
+
+                        <legend>@ViewData["Title"]</legend>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Title</label>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(x => x.Title, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Body</label>
+                            <div class="col-md-8">
+                                <quill-editor asp-for="Body" style="height: 400px;"></quill-editor>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Type</label>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(x => x.Type, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Sender</label>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(x => x.Sender, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">SenderDate</label>
+                            <div class="col-md-8">
+                                <input asp-for="SenderDate" class="form-control input-md" asp-format="{0:yyyy'-'MM'-'dd}" type="date" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">IsDraft</label>
+                            <div class="col-md-8">
+                                @Html.CheckBoxFor(x => x.IsDraft, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">LinkName</label>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(x => x.LinkName, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Kategoriler</label>
+                            <div class="col-md-8">
+                                <select asp-for="Categories"
+                                        id="select1"
+                                        multiple="multiple"
+                                        class="form-control "
+                                        asp-items="ViewBag.Categories"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Taglar</label>
+                            <div class="col-md-8">
+                                <select asp-for="Tags"
+                                        id="select2"
+                                        multiple="multiple"
+                                        class="form-control "
+                                        asp-items="ViewBag.Tags"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for=""></label>
+                            <div class="col-md-4">
+                                <button class="btn btn-success">Kaydet</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-4" id="image-form">
+                    <input type="hidden" name="FileList" id="FileList" value="" v-model="jsonData" asp-for="FileList" />
+
+                    <h2> Ana Resim</h2>
+
+                    <div v-for="item in model" v-if="item.subType==1">
+                        <div>
+                            <img v-bind:src="item.fileName" height="150" />
+                        </div>
+                        <div>
+                            {{item.title}}
+                            <a href="jvascript:;" v-if="!item.isDeleted" v-on:click="isDeleted(item)">Delete</a>
+                            <a href="jvascript:;" v-if="item.isDeleted" v-on:click="isNotDeleted(item)">Delete(cancel)</a>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="file" id="file" name="file" />
+                        <input type="text" id="txtfileTitle" name="txtfileTitle" v-model="fileTitle" />
+                        <a href="javascript:;" v-on:click="post()">Resim Yükle</a>
+                    </div>
+
+                    <h2> Alt Resimler </h2>
+
+                    <div v-for="item in model" v-if="item.subType==2">
+                        <div>
+                            <img v-bind:src="item.fileName" height="150" />
+                        </div>
+                        <div>
+                            {{item.title}}
+                            <a href="jvascript:;" v-if="!item.isDeleted" v-on:click="isDeleted(item)">Delete</a>
+                            <a href="jvascript:;" v-if="item.isDeleted" v-on:click="isNotDeleted(item)">Delete(cancel)</a>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="file" id="file2" name="file2" />
+                        <input type="text" id="txtfileTitle2" name="txtfileTitle2" v-model="fileTitle2" />
+                        <a href="javascript:;" v-on:click="post2()">Resim Yükle</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section ScriptsAdmin
+{
+    <script src="~/js/select2.full.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#select1').select2();
+            $('#select2').select2();
+            var liste = new Vue({
+                el: '#image-form',
+                data: {
+                    model: [],
+                    fileTitle: '',
+                    fileTitle2: '',
+                    jsonData:'',
+                },
+                mounted() {
+                    this.get();
+                },
+                methods: {
+                    get: function () {
+                        axios
+                            .get('/Admin/File/@Model.Id.ToString()?type=5')
+                            .then(response => {
+                                this.model = response.data;
+                                this.jsonData = JSON.stringify(this.model);
+                            })
+                    },
+                    isDeleted: function (item) {
+                        item.isDeleted = true;
+                        this.jsonData = JSON.stringify(this.model);
+
+                    },
+                    isNotDeleted: function (item) {
+                        item.isDeleted = false;
+                        this.jsonData = JSON.stringify(this.model);
+
+                    },
+                    post: function () {
+                        var formData = new FormData();
+                        var imagefile = document.querySelector('#file');
+                        formData.append("file", imagefile.files[0]);
+                        axios.post('/Admin/File/@Model.Id.ToString()?type=5&type2=1&title=' + this.fileTitle, formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }).then(response => {
+                            this.model.push(response.data);
+                            this.jsonData = JSON.stringify(this.model);
+
+                        })
+                    },
+                     post2: function () {
+                        var formData = new FormData();
+                        var imagefile = document.querySelector('#file2');
+                        formData.append("file", imagefile.files[0]);
+                         axios.post('/Admin/File/@Model.Id.ToString()?type=5&type2=2&title=' + this.fileTitle2, formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }).then(response => {
+                            this.model.push(response.data);
+                            this.jsonData = JSON.stringify(this.model);
+
+                        })
+                    },
+                }
+            });
+
+        });
+    </script>
+
+}

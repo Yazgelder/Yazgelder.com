@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Hikayemiz";
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li><a href="/AboutUs" title="Yazılım Geliştiricileri Derneği Hakkımızda sayfası">Hakkımızda</a></li>
+                    <li class="active">@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div id="content" class="no-padding">
+    <section id="section-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <img src="/images/Hikayemiz.jpg" alt="Yazılım Geliştiricileri derneği - Hikayemiz" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-box">
+                        <h2 class="box-title">Dif-tor heh smusma!</h2>
+                        <div class="tiny-border"></div>
+                        <p>Vulcan’lıların selamıyla selamlıyorum sizleri, Live long and prosper! Yani “Uzun yaşa ve başarılı ol!”</p>
+                        <p>Dernegimizin Kurulma hikayesi söyle;</p>
+                        <p> Yazılım Geliştiricileri Derneği (YAZGELDER) fikri ilk olarak Sentez Yazılım bünyesindeki arkadaşlar arasındaki bir tartışma arasında ortaya çıktı.</p>
+                        <p> Yazılım sektöründeki calışanları bilgilendirmek, sıkıntıları dilemek ve gidermek, sektörde yeni arkadaşlara yol gösterici olamak ve tüm arkadaşlarımıza iş haklarını hatırlatmak ve savunmak için derneği kurmaya karar kıldık. </p>
+                        <p> Her büyük organizyondaki gibi birlikte yola çıktığımız arkadaşlardan ayrılanlarda oldu, grubumuza katılan taze kan arkadaşlarımızda oldu.</p>
+                        <p> Artık ülkemize katma değer sağlayan, açık kaynak projeler çıkaran bir dernek olmaktan, Üyelerimizin dertlerini dinleyen, gerekli girişimlerde bulunmanın mutluluğu içindeyiz. </p>
+                        <div class="divider-single"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @Html.Partial("_fooder")
+</div>

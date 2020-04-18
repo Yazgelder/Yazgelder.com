@@ -1,0 +1,31 @@
+﻿@inject Yazgelder.Entity.Context _context
+<div class="col-md-3">
+    <div class="main-sidebar">
+
+        <aside class="widget widget_categories">
+            <h3 class="widget-title">Kategoriler</h3>
+            <div class="tiny-border"></div>
+            <ul>
+                @foreach (var item in _context.Categories.OrderBy(x=>x.Name).ToList())
+                {
+
+                    <li class="cat-item"><a href="/Haberler/Kategori/@item">@item</a>  </li>
+                }
+
+            </ul>
+        </aside>
+
+        <aside class="widget widget_tag_cloud">
+            <h3 class="widget-title">Tags</h3>
+            <div class="tiny-border"></div>
+            <div class="tagcloud">
+                @foreach (var item in _context.Tags.OrderBy(x=>x.Name).ToList())
+                {
+                    <a href="/Haberler/Tag/@item.LinkName">@item.Name</a>
+                }
+            </div>
+        </aside>
+
+
+    </div>
+</div>

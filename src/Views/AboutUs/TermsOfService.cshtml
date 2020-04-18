@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Hizmet Şartları";
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li><a href="/AboutUs" title="Yazılım Geliştiricileri Derneği Hakkımızda sayfası">Hakkımızda</a></li>
+                    <li class="active">@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="content" class="no-padding">
+
+
+    <section id="section-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <img src="/images/HizmetSartlari.jpg" alt="@ViewData["Description"]" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6">
+
+                    <div class="about-box">
+                        <h2 class="box-title">HİZMET ŞARTLARI</h2>
+                        <div class="tiny-border"></div>
+                        <p> Yazım Geliştiricileri Derneği ("YAZGELDER") internet sitesine (“internet sitesi”) hoş geldiniz. İnternet sitesi (“Siz” veya “Sizin”) kullanımınız ile ilgili aşağıdaki şartları ve koşulları lütfen gözden geçiriniz.</p>
+                        <p> İnternet sitesine erişimde bulunarak ve internet sitesindeki herhangi bir dokümanı kullanıp, internet sitesinden herhangi bir doküman indirerek; bu şart ve koşulları (“Şartlar”) izlemeyi ve onlara bağlı kalmayı kabul ediyorsunuz. Bu Şartları kabul etmiyorsanız , bu internet sitesini kullanamazsınız.</p>
+                        <p> Bu internet sitesinde yer alan bilgiler sadece YAZGELDER ve YAZGELDER'in sunduğu hizmetler hakkında bilgi vermek, Dernek hakkında duyuruları yayınlamak, Derneğin hizmetlerini duyurmak, Fahri üye kaydı ve genel kurul üyeliği için ön kayıt amacıyla hazırlanmıştır. Bu, YAZGELDER’in şu anda veya daha önceden hizmet verdiği müşteri bazının menkul kıymetlerinin takası için bir teklif mahiyetinde olmayıp, herhangi bir yatırıma dayanak olarak bağlantılandırılmamalıdır.</p>
+                        <p> Bu internet sitesine erişerek, bu internet sitesinin ihtiva ettiği bilginin ve materyalin kullanımından veya bu internet sitesinden yönlendirme yapılan bağlantılardaki diğer materyale erişiminiz dolayısıyla kaynaklanabilecek doğrudan, dolaylı veya bunun sonucu oluşabilecek kayıplardan YAZGELDER’in sorumlu olmayacağını kabul edersiniz. YAZGELDER, bu bağlantıları sadece bir kolaylık olarak sağlar ve herhangi bir bağlantının dahil edilmesi, bağlantı verilen internet sitesinin onaylandığı anlamına gelmez.</p>
+                        <p> Kullanımınız için seçtiğiniz her şeyin virüs ya da elverişsiz nitelikte diğer öğeleri içermediğinden emin olmak üzere gerekli önlemleri almak sizin sorumluluğunuzdur.</p>
+
+                        <div class="divider-single"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    @Html.Partial("_fooder")
+
+
+</div>

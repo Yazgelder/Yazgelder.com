@@ -1,0 +1,40 @@
+﻿@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Haders
+{
+
+    @RenderSection("HadersAdmin", required: false)
+}
+<section id="sub-header-3" data-speed="81" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım geliştiricileri derneği">Ana Sayfa</a></li>
+                    <li><a href="/Admin" title="Admin">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="content" class="no-padding">
+
+    @RenderBody()
+
+    @Html.Partial("_fooder")
+</div>
+@section Scripts
+{
+    <script src="~/js/vue.js"></script>
+    <script src="~/js/axios.min.js"></script>
+    <script src="~/js/linq.min.js"></script>
+
+    @RenderSection("ScriptsAdmin", required: false)
+}

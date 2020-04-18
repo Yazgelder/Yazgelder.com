@@ -1,0 +1,48 @@
+﻿@model List<BoardDecisions>
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Yönetim Karar Listesi"; 
+}
+
+
+
+<section id="shopping-cart" class="bg-grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <a class="btn btn-success" href="/Admin/BoardDecisions/EditOrInsert/@Guid.Empty">Yeni Ekle</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Fonsiyonlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@item.Number</th>
+                                <td>@item.Date.ToShortDateString()</td>
+                                <td>@item.Title</td>
+                                <td>
+                                    <a class="btn btn-warning" href="/Admin/BoardDecisions/EditOrInsert/@item.Id">Düzenle</a>
+                                    <a class="btn btn-danger" onclick="return confirm('Emin misin?')" href="/Admin/BoardDecisions/Delete/@item.Id">Sil</a>
+                                </td>
+                            </tr> 
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</section>

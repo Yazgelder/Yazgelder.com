@@ -1,0 +1,59 @@
+﻿@model Dues
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Aidat"; 
+}
+
+<section class="shopping-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="/Admin/Dues/EditOrInsert" method="post" class="wpcf7-form form-horizontal">
+                     
+                    <fieldset>
+
+                        <legend>@ViewData["Title"]</legend>
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Money</label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(x => x.Money, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Month</label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(x => x.Month, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Year</label>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(x => x.Year, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Time</label>
+                            <div class="col-md-4">
+                                <input asp-for="Time" class="form-control input-md" asp-format="{0:yyyy'-'MM'-'dd}" type="date" /> 
+                            </div>
+                        </div>
+                         
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for=""></label>
+                            <div class="col-md-4">
+                                <button class="btn btn-success">Kaydet</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,326 @@
+﻿@inject Yazgelder.Entity.Context _context
+@inject Yazgelder.Infrastructure.ISysFunctions _sysFunctions
+@{
+    ViewData["Title"] = "Ana Sayfa";
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+}
+<div class="gray-line3"></div>
+<div class="clearfix"></div>
+<!-- slider -->
+<div id="slider">
+    <!-- revolution slider begin -->
+    <div class="fullwidthbanner-container">
+        <div id="revolution-slider-3">
+            <ul>
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="2500" data-delay="5000">
+                    <!--  BACKGROUND IMAGE -->
+                    <img src="img-rev-slider/8.jpg" alt="">
+
+                    <div class="tp-caption lft custom-font-2"
+                         data-x="center"
+                         data-y="184"
+                         data-speed="800"
+                         data-start="800"
+                         data-easing="easeInOutCubic">
+                        Yazılım geliştiricilerinin
+                    </div>
+
+                    <div class="tp-caption sfb custom-font-1"
+                         data-x="center"
+                         data-y="250"
+                         data-speed="800"
+                         data-start="1400"
+                         data-easing="easeInOutCubic">
+                        Buluşma Noktası
+                    </div>
+                </li>
+
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="2500" data-delay="5000">
+                    <!--  BACKGROUND IMAGE -->
+                    <img src="img-rev-slider/7.jpg" alt="">
+
+                    <div class="tp-caption lft custom-font-2"
+                         data-x="center"
+                         data-y="184"
+                         data-speed="800"
+                         data-start="800"
+                         data-easing="easeInOutCubic">
+                        Nereden başlıyacağınızı bilmiyor musunuz?
+                    </div>
+
+                    <div class="tp-caption sfb custom-font-1"
+                         data-x="center"
+                         data-y="250"
+                         data-speed="800"
+                         data-start="1400"
+                         data-easing="easeInOutCubic">
+                        Biz buradayız
+                    </div>
+                </li>
+
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="2500" data-delay="10000">
+                    <!--  BACKGROUND IMAGE -->
+                    <img src="img-rev-slider/6.jpg" alt="">
+
+                    <div class="tp-caption lft custom-font-2"
+                         data-x="center"
+                         data-y="184"
+                         data-speed="800"
+                         data-start="800"
+                         data-easing="easeInOutCubic">
+                        Birlikte
+                    </div>
+
+                    <div class="tp-caption sfb custom-font-1"
+                         data-x="center"
+                         data-y="250"
+                         data-speed="800"
+                         data-start="1400"
+                         data-easing="easeInOutCubic">
+                        Geleceğe Doğru
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- revolution slider close -->
+</div>
+<!-- slider close -->
+
+<div class="clearfix"></div>
+
+<!-- content begin -->
+<div id="content" class="no-padding">
+    <!-- section begin -->
+    <section id="section-featured">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature no-margin">
+                        <i class="fa fa-bar-chart"></i>
+                        <h3>Eğitim</h3>
+                        <p>Dernek bünyesinde <strong class="highlights">deneyimli </strong> ve<strong class="highlights"> sektöründe uzman </strong> &nbsp;arkadaşlar tarafından ücretsiz eğitim&nbsp;ve destek alabilirsiniz..</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature no-margin">
+                        <i class="fa fa-diamond"></i>
+                        <h3>Destek</h3>
+                        <p>İlgilendiğiniz yazılım dalında<strong class="highlights"> sektöründe uzman </strong>&nbsp;arkadaşlardan destek alabilir, yeni başlayan arkadaşlara destek olabilirsiniz..</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature no-margin">
+                        <i class="fa fa-bullhorn"></i>
+                        <h3>Gelişim</h3>
+                        <p>Birlikte projeler geliştirip yeni arkadaşlara <strong class="highlights">sektörel deneyim</strong> sağlayıp, deneyimli arkadaşlara da proje yöneticiliği deneyimi sağlıyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+    <!-- section begin -->
+    <section id="section-about" class="bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <img src="/images/we-are-thumb-2.jpg" alt="about image" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-box">
+                        <h2 class="box-title">Neden biz?</h2>
+                        <div class="tiny-border"></div>
+                        <p>
+                            <b>Biz Bir Derneğiz..</b> <br />
+                            Normal bir topluluktan farklı olarak, bir resmiyeti olan, devlet tarafından tanınan bir dernek olarak siz yazılım geliştirici arkadaşlarımıza destek olmak için derneğimiz sizinle.
+                        </p>
+                        <p>
+                            <b>Gelişmek ve Geliştirmek Peşindeyiz...</b> <br />
+                            Günümüz teknolojilerini sizlere sunan, kendini geliştiren, kendini geliştirirken de tüm üyelerinin de gelişmesini isteyen bir derneğiz. Türkiye için büyük projeleri olan idealist bir topluluğuz.
+                        </p>
+                        <p>
+                            <b>Sizi Tanıyoruz...</b> <br />
+                            Grubumuzdaki tüm arkadaşlarımız bu işin mutfağından çıkıp gelmiş arkadaşlardır. Sizin sıkıntılarınızı deneyimlemiş, size yol gösterecek arkadaşlar… Siz de bize katılıp bu deneyimlerden faydalanabilir veya deneyimlerinizi sunabilirsiniz
+                        </p>
+
+                        <div class="divider-single"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+    <!-- section begin -->
+    @Html.Partial("_fooder")
+
+    <!-- section close -->
+    <!-- section begin -->
+    <section id="section-news">
+        <div class="container">
+            <div class="row">
+                <div class="latest-blog-posts">
+                    <div class="col-md-12">
+                        <h2 class="box-title">Son Haberler</h2>
+                        <div class="compact-buttons">
+                            <div class="latest-prev compact-prev"><i class="fa fa-angle-left"></i></div>
+                            <div class="latest-next compact-next"><i class="fa fa-angle-right"></i></div>
+                        </div>
+                        <div class="tiny-border"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="latest-news-items-3">
+                        @foreach (var item in _context.News.Where(x=>!x.IsDraft).OrderByDescending(x => x.SenderDate).Take(6).ToList())
+                        {
+                            var img = _context.Pictures.Where(y => y.RelationId == item.Id && y.RecordType == 6 && y.RecordType2 == 1).Select(y => new Yazgelder.Areas.Admin.Models.FileModel() { FileName = y.Picture, Title = y.Title, Type = y.RecordType, SubType = y.RecordType2 }).FirstOrDefault();
+                            <div class="item">
+                                <div class="latest-blog-post-img">
+                                    <img alt="@(img==null?"Yazgelder":img.Title)" src="@(img==null?"/images/ShareImage.png":img.FileName)" class="img-responsive">
+
+                                    <div class="latest-blog-post-date">
+                                        @item.SenderDate.Day
+                                        <span>@item.SenderDate.ToString("MMM")</span>
+                                    </div>
+                                </div>
+                                <div class="latest-blog-post-details">
+                                    <p class="title"><a href="/News/Detail/@item.Id" title="@item.Title">@item.Title</a></p>
+                                    <p>@_sysFunctions.GetString(item.Body, 200)</p>
+                                    <div class="latest-blog-post-data">
+
+                                        <span class="btn-read"><a href="/News/Detail/@item.Id"><i class="fa fa-plus-square"></i> Devamı</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+    <!-- section begin -->
+    <section id="section-partner" class="bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h2 class="inline">Maddi Manevi Destekcilerimiz</h2>
+                    <div class="compact-buttons">
+                        <div class="partner-prev compact-prev"><i class="fa fa-angle-left"></i></div>
+                        <div class="partner-next compact-next"><i class="fa fa-angle-right"></i></div>
+                    </div>
+                    <div class="tiny-border"></div>
+
+                    <div id="client-logo" class="our-partner">
+                        @foreach (var item in _context.Link.OrderByDescending(x => x.Count).ToList())
+                        {
+                            var img = _context.Pictures.Where(y => y.RelationId == item.Id && y.RecordType == 4 ).Select(y => new Yazgelder.Areas.Admin.Models.FileModel() { FileName = y.Picture, Title = y.Title, Type = y.RecordType, SubType = y.RecordType2 }).FirstOrDefault();
+                            <div class="item"><a href="/home/PostLink/@item.Id" target="_blank"><img src="@img.FileName" alt="@item.Name" /></a></div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript" src="/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="/js/revslider-custom.js"></script>
+    <script>
+        (function ($) {
+            "use strict";
+
+            // --------------------------------------------------
+            // owlCarousel
+            // --------------------------------------------------
+
+            /* latest-news-items */
+            $(".latest-news-items-3").owlCarousel({
+                items: 2,
+                itemsDesktop: [1199, 2],
+                itemsDesktopSmall: [979, 2],
+                itemsTablet: [768, 1],
+                itemsTabletSmall: false,
+                itemsMobile: [479, 1],
+                pagination: false,
+                autoPlay: false,
+                slideSpeed: 300,
+            });
+
+            // Custom Navigation owlCarousel - ".latest-news-items"
+            $(".latest-next").on("click", function () {
+                $(this).parent().parent().parent().find('.latest-news-items-3').trigger('owl.next');
+            });
+            $(".latest-prev").on("click", function () {
+                $(this).parent().parent().parent().find('.latest-news-items-3').trigger('owl.prev');
+            });
+
+            /*client-logo-slider */
+            $("#client-logo").owlCarousel({
+                items: 6,
+                itemsCustom: false,
+                itemsDesktop: [1199, 5],
+                itemsDesktopSmall: [979, 4],
+                itemsTablet: [768, 2],
+                itemsTabletSmall: [768, 3],
+                itemsMobile: [479, 1],
+                pagination: false,
+                autoPlay: false,
+                slideSpeed: 300
+            });
+
+            // Custom Navigation owlCarousel - ".testimonials-slider"
+            $(".partner-next").on("click", function () {
+                $(this).parent().parent().find('#client-logo').trigger('owl.next');
+            });
+            $(".partner-prev").on("click", function () {
+                $(this).parent().parent().find('#client-logo').trigger('owl.prev');
+            });
+
+            /* DebouncedResize Function */
+            (function ($) {
+                var $event = $.event,
+                    $special,
+                    resizeTimeout;
+
+                $special = $event.special.debouncedresize = {
+                    setup: function () {
+                        $(this).on('resize', $special.handler);
+                    },
+                    teardown: function () {
+                        $(this).off('resize', $special.handler);
+                    },
+                    handler: function (event, execAsap) {
+                        var context = this,
+                            args = arguments,
+                            dispatch = function () {
+                                event.type = 'debouncedresize';
+
+                                $event.dispatch.apply(context, args);
+                            };
+
+                        if (resizeTimeout) {
+                            clearTimeout(resizeTimeout);
+                        }
+
+                        execAsap ? dispatch() : resizeTimeout = setTimeout(dispatch, $special.threshold);
+                    },
+                    threshold: 150
+                };
+            })(jQuery);
+
+        })(jQuery);
+    </script>
+}

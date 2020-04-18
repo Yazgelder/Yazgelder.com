@@ -1,0 +1,192 @@
+﻿@model List<Yazgelder.Entity.Models.Events>
+@inject Yazgelder.Infrastructure.ISysFunctions _sysFunctions
+
+@{
+    ViewData["Title"] = "Etkinlikler";
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+
+    var q = Model.Select(x => x.StartDate.ToString("MMM yyyy")).ToList();
+}
+@section Haders{
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li class="active">@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- content begin -->
+<div id="content" class="no-padding">
+
+    <!-- section begin -->
+    <section id="section-project">
+        <div class="container">
+            <div class="row">
+                <div id="portfolio-filter" class="project-grid-2">
+                    <ul id="filter">
+                        <li><a href="#" class="current" data-filter="*" title="">All</a></li>
+                        @foreach (var item in q)
+                        {
+                            string i = _sysFunctions.GetMd5Hash(item);
+                            <li><a href="#" data-filter=".@i" title="@item">@item</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+                <div id="projects-grid" class="projects-boxes">
+                    @foreach (var item in Model)
+                    {
+                        var classs = _sysFunctions.GetMd5Hash(item.StartDate.ToString("MMM yyyy"));
+                        var img = item.FileList.FirstOrDefault(x => x.SubType == 1);
+
+                        <div class="project-item col-md-4 col-sm-6 @classs">
+                            <div class="project-item-inner">
+                                <img alt="@(img==null?"Yazgelder":img.Title)" src="@(img==null?"/images/ShareImage.png":img.FileName)" class="img-responsive">
+
+                                <div class="project-details">
+                                    <p class="folio-title"><a href="/Events/detail/@item.Id">@item.Title @(item.IsCancel?"(İPTAL)":"")</a></p>
+                                    <p class="folio-cate">
+                                        <i class="fa fa-tag"></i>
+
+                                        <a href="javascript:;">@item.StartDate.ToString("dd MM yyyy") -@item.EndDate.ToString("dd MM yyyy")</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+</div>
+<!-- content close -->
+
+@section Scripts
+{
+    <script src="~/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript">
+        /* Portfolio Sorting */
+        jQuery(document).ready(function ($) {
+            (function ($) {
+
+                var container = $('#projects-grid');
+
+                function getNumbColumns() {
+                    var winWidth = $(window).width(),
+                        columnNumb = 1;
+                    if (winWidth > 1500) {
+                        columnNumb = 4;
+                    } else if (winWidth > 1200) {
+                        columnNumb = 3;
+                    } else if (winWidth > 900) {
+                        columnNumb = 2;
+                    } else if (winWidth > 600) {
+                        columnNumb = 2;
+                    } else if (winWidth > 300) {
+                        columnNumb = 1;
+                    }
+
+                    return columnNumb;
+                }
+
+                function setColumnWidth() {
+                    var winWidth = $(window).width(),
+                        columnNumb = getNumbColumns(),
+                        postWidth = Math.floor(winWidth / columnNumb);
+                }
+
+                $('#portfolio-filter #filter a').click(function () {
+                    var selector = $(this).attr('data-filter');
+
+                    $(this).parent().parent().find('a').removeClass('current');
+                    $(this).addClass('current');
+
+                    container.isotope({
+                        filter: selector
+                    });
+
+                    setTimeout(function () {
+                        reArrangeProjects();
+                    }, 300);
+
+                    return false;
+                });
+
+                function reArrangeProjects() {
+                    setColumnWidth();
+                    container.isotope('reLayout');
+                }
+
+                container.imagesLoaded(function () {
+                    setColumnWidth();
+
+                    container.isotope({
+                        itemSelector: '.project-item',
+                        layoutMode: 'masonry',
+                        resizable: false
+                    });
+                });
+
+                $(window).on('debouncedresize', function () {
+                    reArrangeProjects();
+                });
+            })(jQuery);
+        });
+
+        /* DebouncedResize Function */
+        (function ($) {
+            var $event = $.event,
+                $special,
+                resizeTimeout;
+
+            $special = $event.special.debouncedresize = {
+                setup: function () {
+                    $(this).on('resize', $special.handler);
+                },
+                teardown: function () {
+                    $(this).off('resize', $special.handler);
+                },
+                handler: function (event, execAsap) {
+                    var context = this,
+                        args = arguments,
+                        dispatch = function () {
+                            event.type = 'debouncedresize';
+
+                            $event.dispatch.apply(context, args);
+                        };
+
+                    if (resizeTimeout) {
+                        clearTimeout(resizeTimeout);
+                    }
+
+                    execAsap ? dispatch() : resizeTimeout = setTimeout(dispatch, $special.threshold);
+                },
+                threshold: 150
+            };
+        })(jQuery);
+
+        /* project-details */
+        $('.project-item').hover(function () {
+            $(this).find('.project-details').stop(true, true).fadeIn().find('.folio-title').stop(true, true).animate({ 'top': 30 }).end().find('.folio-cate').stop(true, true).animate({ 'bottom': 30 });
+        }, function () {
+            $(this).find('.project-details').stop(true, true).fadeOut().find('.folio-title').stop(true, true).animate({ 'top': -30 }).end().find('.folio-cate').stop(true, true).animate({ 'bottom': -30 });
+        });
+    </script>
+}

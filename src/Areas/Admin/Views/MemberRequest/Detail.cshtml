@@ -1,0 +1,90 @@
+﻿@model MemberRequest
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Proje Talepleri";
+}
+
+<section class="shopping-cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="wpcf7-form form-horizontal">
+
+                    <fieldset>
+
+                        <legend>@ViewData["Title"]</legend>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">IsHonorary</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.IsHonorary</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Name</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Name</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Surname</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Surname</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Telephone</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Telephone</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Gender</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Gender</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Job</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Job</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Email</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Email</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Reference</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Reference</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Reference2</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Reference2</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Birthday</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.Birthday.ToShortDateString()</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">ApplicationDate</label>
+                            <div class="col-md-4">
+                                <div class="form-control input-md">@Model.ApplicationDate.ToShortDateString()</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

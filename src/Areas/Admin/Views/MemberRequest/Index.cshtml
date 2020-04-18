@@ -1,0 +1,54 @@
+﻿@model List<MemberRequest>
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Üye Başvuru Listesi";
+    int i = 1;
+}
+
+
+
+<section id="shopping-cart" class="bg-grey">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">IsHonorary</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telephone</th>
+                            <th scope="col">Reference</th>
+                            <th scope="col">Fonsiyonlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>@item.IsHonorary </td>
+                                <td>@item.Name</td>
+                                <td>@item.Surname </td>
+                                <td>@item.Email </td>
+                                <td>@item.Telephone </td>
+                                <td>@item.Reference </td>
+                                <td>
+                                    <a class="btn btn-warning" href="/Admin/MemberRequest/Detail/@item.Id">Detay</a>
+                                    <a class="btn btn-danger" onclick="return confirm('Emin misin?')" href="/Admin/MemberRequest/Delete/@item.Id">Sil</a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</section>

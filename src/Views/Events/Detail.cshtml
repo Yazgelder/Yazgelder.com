@@ -1,0 +1,129 @@
+﻿@model Yazgelder.Entity.Models.Events
+@inject Yazgelder.Infrastructure.ISysFunctions _sysFunctions
+@inject Yazgelder.Entity.Context _context
+@{
+    ViewData["Title"] = Model.Title + (Model.IsCancel ? " (İPTAL)" : "");
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li><a href="/Events" title="Yazılım Geliştiricileri Derneği Etkinlik liste sayfası">Etkinlikler</a></li>
+                    <li class="active">@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="content">
+    <!-- section begin -->
+    <section id="section-project" class="no-padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="project-slider">
+                        @foreach (var item in Model.FileList.OrderBy(x => x.SubType))
+                        {
+                            <div class="item"><img alt="@item.Title" src="@item.FileName"></div>
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="project-info">
+                        <h2 class="box-title">@Model.Title @(Model.IsCancel?"(İPTAL)":"")</h2>
+                        @Html.Raw(Model.Comment)
+                        <ul class="project-list">
+                            <li><strong>Tarihler :</strong> @Model.StartDate.ToString("dd.MM.yyyy") @Model.EndDate.ToString("dd.MM.yyyy")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Project begin -->
+    <section id="section-related-project" class="no-padding-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="latest-projects-2 clearfix">
+                        <div class="latest-projects-wrapper">
+                            <div class="text-center">
+                                <h2 class="box-title">Diğer Etkinlikler</h2>
+                                <div class="tiny-border"></div>
+                            </div>
+                            <div id="related-projects" class="latest-projects-items">
+                                @foreach (var item in _context.Events.Where(x => x.Id != Model.Id).OrderByDescending(x => x.StartDate).Take(6))
+                                {
+                                    var img = _context.Pictures.FirstOrDefault(x => x.RelationId == item.Id && x.RecordType == 3 && x.RecordType2 == 1)?.Picture ?? "/images/ShareImage.png";
+                                    <div class="item">
+                                        <img src="@img" alt="" class="img-responsive">
+                                        <div class="project-details">
+                                            <p class="folio-title"><a href="/Events/detail/@item.Id">@item.Title</a></p>
+                                            <p class="folio-cate">
+                                                <i class="fa fa-tag"></i>
+                                                <a href="javascript:;">@item.StartDate.ToString("dd MM yyyy") -@item.EndDate.ToString("dd MM yyyy")</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Related Project close -->
+</div>
+<!-- content close -->
+
+@section Scripts{
+
+    <script type="text/javascript">
+        /* Portfolio Sorting */
+        $(document).ready(function () {
+            $(".project-slider").owlCarousel({
+                singleItem: true,
+                lazyLoad: true,
+                navigation: true,
+                autoPlay: true,
+                navigationText: [
+                    "<i class='fa fa-chevron-left'></i>",
+                    "<i class='fa fa-chevron-right'></i>"
+                ],
+                slideSpeed: 400,
+            });
+            $("#related-projects").owlCarousel({
+                items: 4,
+                itemsCustom: false,
+                itemsDesktop: [1199, 3],
+                itemsDesktopSmall: [979, 2],
+                itemsTablet: [768, 2],
+                itemsTabletSmall: false,
+                itemsMobile: [479, 1],
+                navigation: true,
+                pagination: false,
+                navigationText: [
+                    "<i class='fa fa-angle-left'></i>",
+                    "<i class='fa fa-angle-right'></i>"
+                ],
+            });
+        });
+    </script>
+
+}

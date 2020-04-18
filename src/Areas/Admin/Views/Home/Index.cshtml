@@ -1,0 +1,83 @@
+﻿@model Yazgelder.Areas.Admin.Models.SendSms
+@inject Yazgelder.Infrastructure.ISysFunctions _sysFunctions
+@{
+    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Ana Sayfa";
+    int i = 1;
+}
+
+<section id="shopping-cart" class="bg-grey">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Kontor Bilgileri</h2>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Ordinatör</th>
+                            <th scope="col">Kontur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in _sysFunctions.GetSmsInfos())
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>@item.Ordinator</td>
+                                <td>@item.SmsCount </td>
+                            </tr>
+                            i++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+
+                <form action="/Admin/Home/SendMessage" method="post" class="wpcf7-form form-horizontal">
+                    <fieldset>
+
+                        <legend>Mesaj At</legend>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Toplu?</label>
+                            <div class="col-md-8">
+                                @Html.CheckBoxFor(x => x.IsBulk, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Numaralar?</label>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(x => x.Numbers, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Mesaj?</label>
+                            <div class="col-md-8">
+                                @Html.TextAreaFor(x => x.Message, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Name?</label>
+                            <div class="col-md-8">
+                                @Html.CheckBoxFor(x => x.IsStartNameSurname, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="passwordinput">Resmi?</label>
+                            <div class="col-md-8">
+                                @Html.CheckBoxFor(x => x.IsResmi, new { @class = "form-control input-md" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for=""></label>
+                            <div class="col-md-8">
+                                <button class="btn btn-success">Gönder</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

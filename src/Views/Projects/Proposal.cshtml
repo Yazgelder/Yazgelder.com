@@ -1,0 +1,119 @@
+﻿@model Yazgelder.Entity.Models.ProjectProposal
+@inject Microsoft.Extensions.Options.IOptions<Yazgelder.Config.SiteConfig> options
+
+@{
+    ViewData["Title"] = "Proje Öneri Formu";
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Url"] = "https://www.yazgelder.org/Member/Honorary";
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li class="active">@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="content" class="no-padding">
+    <section id="section-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <img src="/images/Project_proposal.jpg" alt="@ViewData["Description"]" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-box">
+                        <h2 class="box-title">Proje Öneri Formu</h2>
+                        <div class="tiny-border"></div>
+
+                        @using (Html.BeginForm("ProposalPost", "Projects", null, FormMethod.Post, true, new { @class = " wpcf7-form form-horizontal" }))
+                        {
+
+                            <fieldset>
+                                @if (ViewData.ModelState.ErrorCount > 0)
+                                {
+                                    foreach (var modelState in ViewData.ModelState.Values)
+                                    {
+                                        foreach (var error in modelState.Errors)
+                                        {
+                                            <div class="form-group row errorRow">
+                                                <div class="col-12">
+                                                    @error
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                }
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Adınız</label>
+                                    <div class="col-md-5">
+                                        @Html.TextBoxFor(x => x.ProjectName, new { @class = "form-control input-md" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Soy Adınız</label>
+                                    <div class="col-md-5">
+                                        @Html.TextBoxFor(x => x.SenderSurname, new { @class = "form-control input-md" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Mail Adresiniz</label>
+                                    <div class="col-md-5">
+                                        @Html.TextBoxFor(x => x.SenderMail, new { @class = "form-control input-md" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Proje Adı</label>
+                                    <div class="col-md-5">
+                                        @Html.TextBoxFor(x => x.ProjectName, new { @class = "form-control input-md" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Proje Acıklaması</label>
+                                    <div class="col-md-5">
+                                        @Html.TextAreaFor(x => x.ProjectExplanation, new { @class = "form-control input-md" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput"> </label>
+                                    <div class="col-md-5">
+                                        <p><div class="g-recaptcha" data-sitekey="@options.Value.GoogleReCaptchaSiteKey"></div></p>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                                <div class="col-md-12 text-left">
+                                    <input type="submit" value="Proje Öner" class="btn btn-primary width">
+                                </div>
+                            </fieldset>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @Html.Partial("_fooder")
+</div>

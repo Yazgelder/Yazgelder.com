@@ -1,0 +1,67 @@
+﻿@model List<Yazgelder.Entity.Models.BoardDecisions>
+@inject Yazgelder.Infrastructure.ISysFunctions _sysFunctions
+
+@{
+    ViewData["Title"] = "Yönetim Kurulu Kararları";
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org/Images/ShareImage.png";
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li><a href="/AboutUs" title="Yazılım Geliştiricileri Derneği Hakkımızda sayfası">Hakkımızda</a></li>
+                    <li class="active">@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- content begin -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div id="blog-grid" class="blog-grid">
+                @foreach (var item in Model)
+                {
+                    var img = item.FileList.First();
+                    <!-- post begin -->
+
+                    <article class="item col-md-4 col-sm-6">
+                        <div class="post-media">
+                            <img alt="@(img==null?"Yazgelder":img.Title)" src="@(img==null?"/images/ShareImage.png":img.FileName)" class="img-responsive">
+                            <div class="post-date">
+                                <span class="date-day">@item.Date.Day</span>
+                                <span class="date-month">@item.Date.ToString("MMM")</span>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-title">
+                                <h5><a href="/AboutUs/BoardDecisionsDetail/@item.Id.ToString()">@item.Title</a></h5>
+                            </div>
+
+                            <div class="post-entry">
+                                <p>@_sysFunctions.GetString(item.Body,200)</p>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- post close -->
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content close -->

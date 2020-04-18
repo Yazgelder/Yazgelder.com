@@ -1,0 +1,86 @@
+﻿@model Yazgelder.Entity.Models.BoardDecisions
+@inject Yazgelder.Infrastructure.ISysFunctions _sysFunctions
+
+@{
+    var img = Model.FileList.First();
+    var imgstr = (img == null ? "/images/ShareImage.png" : img.FileName);
+    ViewData["Title"] = Model.Title;
+
+    ViewData["Description"] = "Yazgelder - Yazılım Geliştiricileri Derneği - " + ViewData["Title"];
+    ViewData["Date"] = (DateTime.Now.ToString("s")) + "+0300";
+    ViewData["image"] = "https://www.yazgelder.org" + imgstr;
+    ViewData["image:width"] = "1200";
+    ViewData["image:height"] = "627";
+}
+@section Haders{
+
+}
+
+<section id="sub-header-3" data-speed="8" data-type="background" class="padding-top-bottom subheader" style="background-position: 50% 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-9">
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="breadcrumbs-outer">
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                    <li><a href="/AboutUs" title="Yazılım Geliştiricileri Derneği Hakkımızda sayfası">Hakkımızda</a></li>
+                    <li><a href="/AboutUs/BoardDecisions" title="Yazılım Geliştiricileri Derneği Yönetim kurulu kararları">Yönetim kurulu kararları</a></li>
+                    <li class="active">@ViewData["Title"]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- content begin -->
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="blog-single">
+                    <!-- post begin -->
+                    <article>
+                        <div class="post-media">
+                            <img src="@imgstr" class="img-responsive">
+                        </div>
+                        <div class="post-content">
+                            <div class="post-title">
+                                <h1>@Model.Title</h1>
+                            </div>
+                            <div class="post-metadata">
+                                <span class="posted-on">
+                                    <i class="fa fa-clock-o"></i>
+                                    @Model.Date.ToShortDateString()
+                                </span>
+                                <span class="byline">
+                                    <i class="fa fa-user"></i>
+                                    Yönetim Kurulu Kararı
+                                </span>
+                                <span class="byline">
+                                    <i class="fa fa-star-half-o"></i>
+                                    @Model.DateOrderNo
+                                </span>
+                                <span class="byline">
+                                    <i class="fa fa-angellist"></i>
+                                    @Model.Number
+                                </span>
+                            </div>
+                            <div class="hr"></div>
+                            <div class="post-entry">
+                                @Html.Raw(Model.Body)
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </div>
+                    </article>
+                    <!-- post close -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content close -->

@@ -1,0 +1,73 @@
+﻿@model Yazgelder.Entity.Models.User
+@inject Microsoft.Extensions.Options.IOptions<Yazgelder.Config.SiteConfig> options
+
+@{    Layout = $"~/Areas/Admin/Views/Shared/_Layout.cshtml";
+ 
+    ViewData["Title"] = "Admin Login";
+}
+
+<section id="subheader" data-speed="8" data-type="background" class="padding-top-bottom subheader">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>@ViewData["Title"]</h1>
+                <ul class="breadcrumbs">
+                    <li><a href="/" title="Yazılım Geliştiricileri Derneği">Ana Sayfa</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="content" class="no-padding">
+
+    <section id="section-about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <img src="/images/we-are-thumb-1.jpg" alt="about image" class="img-responsive">
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="about-box">
+                        <h2 class="box-title">Kullanıcı Girişi</h2>
+                        <div class="tiny-border"></div>
+
+                        @if (ViewData.ModelState.ErrorCount > 0)
+                        {
+                            <div class="form-group row errorRow">
+                                @foreach (var modelState in ViewData.ModelState.Values)
+                                {
+                                    foreach (var error in modelState.Errors)
+                                    {
+                                        <div class="col-12">
+                                            @error
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+
+                        <form asp-area="Admin" asp-controller="Login" asp-action="Login" method="post" class="wpcf7-form">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>@Html.TextBoxFor(x => x.UserName, new { required = "true" })</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <p>@Html.PasswordFor(x => x.Password, new { required = "true" })</p>
+                                </div>
+                                <div class="col-md-12">
+                                    <p><div class="g-recaptcha" data-sitekey="@options.Value.GoogleReCaptchaSiteKey"></div></p>
+                                </div>
+                                <div class="col-md-12">
+                                    <p><button class="btn btn-success btn-block waves-effect waves-light" type="submit">Giriş</button></p>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="divider-single"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     
+</div>

@@ -1,0 +1,187 @@
+﻿@inject Microsoft.Extensions.Options.IOptions<Yazgelder.Config.SiteConfig> options
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewData["Title"] - Yazgelder - Yazılım Geliştiricileri Derneği</title>
+    <meta name="description" content="Yazılım ve Yazılım geliştiriciler hakkında herşey, Yazılım standartlarını oluşturma ve Yayma da Yazılımcıları bir araya getiren dernek">
+    <meta name="author" content="Yazgelder - Yazılım Geliştiricileri Derneği">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="publisher" href="https://plus.google.com/105892091493114808055" />
+    <meta http-equiv="content-language" content="tr-TR" />
+    <link rel="index" title="Yazılım Geliştiricileri Derneği" href="https://www.yazgelder.org" />
+
+    <meta http-equiv="last-modified" content="@(DateTime.Now.AddHours(-1).ToString("s"))+0300" />
+    <meta itemprop="name" content="@ViewData["Title"] - Yazılım Geliştiricileri Derneği" />
+    <meta itemprop="description" content="@ViewData["Description"]" />
+    <meta itemprop="image" content="@ViewData["image"]" />
+    <meta itemprop="url" content="@ViewData["Url"]" />
+    <meta itemprop="dateModified" content="@(DateTime.Now.AddHours(-1).ToString("s"))+0300" />
+    <meta itemprop="datePublished" content="@ViewData["Date"]+0300" />
+    <meta itemprop="articleSection" content="Yazılım" />
+    <meta name="DC.date.issued" content="@ViewData["Date"]+0300" />
+    <meta name="Rating" content="General" />
+    <link rel="image_src" href="@ViewData["image"]" type="image/jpeg" />
+    <meta name="title" content="@ViewData["Title"] - Yazılım Geliştiricileri Derneği" />
+    <link rel="canonical" href="@ViewData["Url"]" />
+    <meta property="og:title" content="@ViewData["Title"] - Yazılım Geliştiricileri Derneği" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@ViewData["Url"]" />
+    <meta property="og:description" content="@ViewData["Description"]" />
+    <meta property="og:image" content="@ViewData["image"]" />
+    <meta property="og:image:width" content="@ViewData["image:width"]" />
+    <meta property="og:image:height" content="@ViewData["image:height"]" />
+    <meta property="og:site_name" content="Yazılım Geliştiricileri Derneği" />
+    <meta property="twitter:site" content="@("@Yazgelder")" />
+    <meta property="twitter:creator" content="@("@Yazgelder")" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="@ViewData["Url"]" />
+    <meta property="twitter:domain" content="https://www.yazgelder.org" />
+    <meta property="twitter:title" content="@ViewData["Title"] - Yazılım Geliştiricileri Derneği" />
+    <meta property="twitter:image" content="@ViewData["image"]" />
+    <meta property="twitter:description" content="@ViewData["Description"]" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/images/icos/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/images/icos/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/icos/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/images/icos/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/images/icos/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/images/icos/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/icos/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/icos/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/icos/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/images/icos/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icos/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/icos/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/icos/favicon-16x16.png">
+    <link rel="manifest" href="/images/icos/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/images/icos/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    @RenderSection("Haders", required: false)
+
+    <quill-editor-style-sheets></quill-editor-style-sheets>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    @RenderSection("DnsPrefetch", required: false)
+
+    <link href="/css/site.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+    @Html.Partial("_Menu")
+
+    @RenderBody()
+
+    <footer class="footer-1 bg-color-1">
+
+        <div class="main-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="compact-widget">
+                            <div class="widget-inner">
+                                <img class="logo-footer" src="/images/logo-footer.png" alt="Yazılım Geliştiricileri Derneği">
+                                <p>"Birlikten Kuvvet Doğar" felsefesiyle yola cıkmış olan bizler, bu aile ortamında, paylaşım ve açık kaynaklı yeni projeler üretmede sizleri de aramızda görmekten büyük kıvanç duyarız.</p>
+                                <div class="social-icons clearfix">
+                                    <a href="https://www.facebook.com/YazGelDer/" class="facebook" title="Yazılım Geliştiricileri Derneği Facebook Sayfası"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://twitter.com/yazgelder" class="twitter" title="Yazılım Geliştiricileri Derneği Twitter Sayfası"><i class="fa fa-twitter"></i></a>
+                                    <a href="https://plus.google.com/116504936519660345398" class="google" title="Yazılım Geliştiricileri Derneği Google Plus Sayfası"><i class="fa fa-google-plus"></i></a>
+                                    <a href="https://www.youtube.com/channel/UC6CpFLWg4ToixzFS3gWbu6g" class="youtube" title="Yazılım Geliştiricileri Derneği Youtube Kanalı"><i class="fa fa-youtube-play"></i></a>
+                                    <a href="https://tr.linkedin.com/company/yaz%C4%B1l%C4%B1m-geli%C5%9Ftiricileri-dernegi" class="linkedin" title="Yazılım Geliştiricileri Derneği Linkedin Sayfası"><i class="fa fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="compact-widget">
+                            <h3 class="widget-title">Bilgiler</h3>
+                            <div class="widget-inner">
+                                <ul>
+                                    <li><a href="/AboutUs/">Hakkımızda</a></li>
+                                    <li><a href="/AboutUs/OurStory">Hikayemiz</a></li>
+                                    <li><a href="/AboutUs/TermsOfService">Hizmet Şartları</a></li>
+                                    <li><a href="/AboutUs/PrivacyPolicy">Gizlilik Politikası</a></li>
+                                    <li><a href="/Home/SiteMap">Site Haritası</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="compact-widget">
+                            <h3 class="widget-title">İrtibat Bilgileri</h3>
+                            <div class="widget-inner">
+                                <p>
+                                    Adres: Demirciler 8. cadde no 75 kat 8 / 276
+                                    <br> Zeytinburnu, İstanbul
+                                </p>
+
+                                <p>Email: info@yazgelder.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="compact-widget">
+                            <h3 class="widget-title">Mail Listesi</h3>
+                            <div class="widget-inner">
+                                <div class="newsletter newsletter-widget">
+                                    <p>Etkinliklerimizden haberdar olmak ister misiniz?</p>
+                                    @using (Html.BeginForm("Newsletter", "Home", null, FormMethod.Post, true, new { }))
+                                    {
+
+                                        <p><input class="newsletter-email" type="email" name="Mail" placeholder="Mail Adresiniz"><i class="fa fa-envelope-o"></i></p>
+                                        <p><div class="g-recaptcha" data-sitekey="@options.Value.GoogleReCaptchaSiteKey"></div></p>
+                                        <p><input class="newsletter-submit" type="submit" value="Haberdar Et"></p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        Sitede bulunan yazı ve materyallerin tüm hakları saklıdır &copy; @DateTime.Now.Year Yazılım Geliştiricileri Derneği. <a href="https://github.com/Yazgelder/Yazgelder.com" target="_blank">[SOURCE CODE - GITHUB]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a id="to-the-top"><i class="fa fa-angle-up"></i></a>
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script src="/js/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="/js/easing.js"></script>
+    <script type="text/javascript" src="/js/tipper.js"></script>
+    <script type="text/javascript" src="/js/owl.carousel.js"></script>
+    <script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/js/wow.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.magnific-popup.min.js"></script>
+
+    <script type="text/javascript" src="/js/jquery.waypoints.min.js"></script>
+    <script type="text/javascript" src="/js/sticky.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="/js/site.js"></script>
+    <quill-editor-script></quill-editor-script>
+    @RenderSection("Scripts", required: false)
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-91090235-1', 'auto');
+        ga('send', 'pageview');</script>
+</body>
+</html>

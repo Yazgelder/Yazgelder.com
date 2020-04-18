@@ -1,0 +1,47 @@
+﻿@model List<ProjectProposal>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Proje Talep Listesi";
+    int i = 1;
+}
+
+
+
+<section id="shopping-cart" class="bg-grey">
+    <div class="container">
+ 
+             <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">SenderMail</th>
+                            <th scope="col">SenderName</th>
+                            <th scope="col">ProjectName</th>
+                            <th scope="col">Fonsiyonlar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <th scope="row">@i</th>
+                            <td>@item.SenderMail</td>
+                            <td>@item.SenderName </td>
+                            <td>@item.ProjectName </td>
+                            <td> 
+                                <a class="btn btn-danger" onclick="return confirm('Emin misin?')" href="/Admin/ProjectProposal/Delete/@item.Id">Sil</a>
+                            </td>
+                        </tr>
+                            i++;
+                        }
+                     
+                    </tbody>
+                </table>
+            </div> 
+    
+        </div>
+    
+    </div>
+</section>
