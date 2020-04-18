@@ -2068,6 +2068,7 @@ section,
 /* Blog Grid */
 .blog-grid .item {
     margin-bottom: 30px;
+    min-height: 400px;
 }
 
     .blog-grid .item .post-media {

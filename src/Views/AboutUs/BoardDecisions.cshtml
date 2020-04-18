@@ -37,7 +37,7 @@
             <div id="blog-grid" class="blog-grid">
                 @foreach (var item in Model)
                 {
-                    var img = item.FileList.First();
+                    var img = item.FileList.FirstOrDefault();
                     <!-- post begin -->
 
                     <article class="item col-md-4 col-sm-6">

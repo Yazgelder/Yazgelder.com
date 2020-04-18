@@ -2,7 +2,7 @@
 @inject Yazgelder.Infrastructure.ISysFunctions _sysFunctions
 
 @{
-    var img = Model.FileList.First();
+    var img = Model.FileList.FirstOrDefault();
     var imgstr = (img == null ? "/images/ShareImage.png" : img.FileName);
     ViewData["Title"] = Model.Title;
 

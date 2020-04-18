@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Data\" />
+    <Compile Remove="wwwroot\Data\**" />
+    <Compile Remove="wwwroot\photo\**" />
+    <Content Remove="wwwroot\Data\**" />
+    <Content Remove="wwwroot\photo\**" />
+    <EmbeddedResource Remove="wwwroot\Data\**" />
+    <EmbeddedResource Remove="wwwroot\photo\**" />
+    <None Remove="wwwroot\Data\**" />
+    <None Remove="wwwroot\photo\**" />
   </ItemGroup>
 
   <ItemGroup>
