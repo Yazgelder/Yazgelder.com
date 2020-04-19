@@ -18,7 +18,9 @@
             q.AddRange(r);
         }
         if (item.Year > 2000)
+        {
             q.Add(item.Year.ToString());
+        }
     }
     q = q.Select(x => x.Trim()).Distinct().OrderBy(x => x).ToList();
 }
@@ -72,7 +74,9 @@
                                 classs += _sysFunctions.GetMd5Hash(ii) + " ";
                             }
                             if (item.Year > 2000)
+                            {
                                 classs += _sysFunctions.GetMd5Hash(item.Year.ToString()) + " ";
+                            }
 
                         }
                         var img = item.FileList.FirstOrDefault(x => x.SubType == 1);
