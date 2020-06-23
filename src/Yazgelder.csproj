@@ -7,13 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="wwwroot\Data\**" />
     <Compile Remove="wwwroot\photo\**" />
-    <Content Remove="wwwroot\Data\**" />
     <Content Remove="wwwroot\photo\**" />
-    <EmbeddedResource Remove="wwwroot\Data\**" />
     <EmbeddedResource Remove="wwwroot\photo\**" />
-    <None Remove="wwwroot\Data\**" />
     <None Remove="wwwroot\photo\**" />
   </ItemGroup>
 
@@ -36,5 +32,11 @@
     <PackageReference Include="RestSharp" Version="106.10.1" />
     <PackageReference Include="Select.HtmlToPdf.NetCore" Version="19.2.0" />
     <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0006" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
