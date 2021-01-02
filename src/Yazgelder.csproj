@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <StartupObject>Yazgelder.Program</StartupObject>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <UserSecretsId>c87cf076-e6aa-459f-8a37-c442afd8083e</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
