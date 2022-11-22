@@ -64,7 +64,7 @@ namespace Yazgelder.Controllers
                 Number = x.Number,
                 Title = x.Title,
                 FileList = _context.Pictures.Where(y => y.RelationId == x.Id && y.RecordType == 1).Select(y => new FileModel() { FileName = y.Picture, Title = y.Title, Type = y.RecordType, SubType = y.RecordType2 }).ToList()
-            }).ToList();
+            }).OrderByDescending(x => x.Number).ToList();
 
             return View(t);
         }
